@@ -1,3 +1,13 @@
+// Import the readline module
+const readline = require('readline');
+
+// Create an interface to read input from the terminal
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+
 // Function to generate student grades based on marks input
 function studentGradeGenerator(marks) {
     // Check if marks is not a number, or if it's less than 0 or greater than 100
@@ -24,4 +34,15 @@ function studentGradeGenerator(marks) {
     return grade; 
 }
 
-studentGradeGenerator();
+// Prompt the user for input
+rl.question('Enter students marks: ', (input)=> {
+    const marks = parseFloat(input);
+
+    //GEnerate the grade
+    studentGradeGenerator(marks);
+
+    //close the readline interface
+    rl.close();
+});
+
+
